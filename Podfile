@@ -7,6 +7,7 @@ target 'Clash of Score' do
 
   # Pods for Clash of Score
 pod 'Firebase'
+pod 'FirebaseDatabase'
 
 
 end
