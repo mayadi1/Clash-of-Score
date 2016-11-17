@@ -7,6 +7,8 @@
 //
 
 import UIKit
+import Firebase
+import FirebaseDatabase
 
 class ServerViewController: UIViewController {
     @IBOutlet weak var apple: UIImageView!
@@ -14,13 +16,70 @@ class ServerViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+     let ref = FIRDatabase.database().reference()
+        
+        ref.child("target").observe(FIRDataEventType.value, with: { (snapshot) in
+            
+            if snapshot.value != nil{
+                print("I am the poiunt")
+                
+                
+                let twDataArray: NSArray = snapshot.value as! NSArray
+                
+                
+                var pointX = twDataArray[0] as! Double
+                var pointY = twDataArray[1] as! Double
+                
+                pointX = pointX * 1000
+                pointY = pointY * 1000
+                let myPoint = CGPoint(x: abs(pointX), y: abs(pointY))
 
-        let point = CGPoint(x: 0.5, y: 0.5)
-        self.target.center = point
+                self.target.center = myPoint
+                
+                print(pointY)
+                
+
+                }
+        })
+
+        
+        
+        
     }
     
     //Hide status bar
     override var prefersStatusBarHidden: Bool {
         return true
+    }
+    func randomInRange(lo: Int, hi : Int) -> Int {
+        return lo + Int(arc4random_uniform(UInt32(hi - lo + 1)))
+    }
+    
+    func newApplePossition(){
+        // x coordinate between MinX (left) and MaxX (right):
+        let randomX = randomInRange(lo: Int(self.view.frame.minX + 5), hi: Int(self.view.frame.maxX - 5))
+        // y coordinate between MinY (top) and MidY (middle):
+        let randomY = randomInRange(lo: Int(self.view.frame.minY + 5), hi: Int(self.view.frame.maxY - 5))
+        let randomPoint = CGPoint(x: randomX, y: randomY)
+        
+        //check if the point in the view
+        let isPointInFrame = self.view.frame.contains(randomPoint)
+        
+        if isPointInFrame == true{
+          
+            self.apple.center = randomPoint
+            print(randomPoint)
+            let ref = FIRDatabase.database().reference()
+            ref.child("apple").setValue([randomPoint.x, randomPoint.y])
+        }else{
+            newApplePossition()
+        }
+
+    }
+    @IBAction func test(_ sender: AnyObject) {
+        newApplePossition()
+        
+        
     }
 }

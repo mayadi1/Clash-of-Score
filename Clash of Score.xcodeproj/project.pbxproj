@@ -132,6 +132,7 @@
 				TargetAttributes = {
 					186BAFF51DDB02FA0055DFC4 = {
 						CreatedOnToolsVersion = 8.0;
+						DevelopmentTeam = 6KKRC5GQMV;
 						ProvisioningStyle = Automatic;
 					};
 				};
@@ -348,6 +349,7 @@
 			baseConfigurationReference = 39A44A156824CB6BA13282E1 /* Pods-Clash of Score.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				DEVELOPMENT_TEAM = 6KKRC5GQMV;
 				INFOPLIST_FILE = "Clash of Score/Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
@@ -362,6 +364,7 @@
 			baseConfigurationReference = 3054DB4597E5F2788062FC33 /* Pods-Clash of Score.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				DEVELOPMENT_TEAM = 6KKRC5GQMV;
 				INFOPLIST_FILE = "Clash of Score/Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
