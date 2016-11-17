@@ -23,7 +23,7 @@ class ViewController: UIViewController {
         super.viewDidLoad()
        
         motionManager = CMMotionManager()
-        motionManager.accelerometerUpdateInterval = 0.1
+        //motionManager.accelerometerUpdateInterval = 0.1
                 
         motionManager.startAccelerometerUpdates()
         
